@@ -201,14 +201,25 @@ int main(void)
   //int status = 1;
     setTimer1(100);
     setTimer2(50);
+    int count = 0;
     while (1)
     {
-  	  if ( timer1_flag == 1)
-  	  {
-  		  setTimer1(100);
+    	if ( timer1_flag == 1)
+    		  {
+    			  if ( count == 0)
+    			  {
+    				  HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
+    				  HAL_GPIO_WritePin(LED_DOT_GPIO_Port, LED_DOT_Pin, GPIO_PIN_SET);
 
-  		  HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
-  	  }
+    				  count = 1;
+    			  }
+    			  else {
+    				  HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
+    				  HAL_GPIO_WritePin(LED_DOT_GPIO_Port, LED_DOT_Pin, GPIO_PIN_RESET);
+    				  count = 0;
+    			  }
+    			  setTimer1(100);
+    		  }
   	  if (timer2_flag == 1)
   	  {
   		  setTimer2(50);
@@ -225,6 +236,8 @@ int main(void)
   			  display7SEG(2);
   			  status = 1;
   			  break;
+  		  case 3:
+
   		  default:
   			  break;
   		  }
