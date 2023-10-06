@@ -203,11 +203,11 @@ int status = 1;
   while (1)
   {
 	  if ( timer1_flag == 1)
-	  {
-		  setTimer1(100);
+	 	  {
+	 		  setTimer1(100);
 
-		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-	  }
+	 		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+	 	  }
 	  if (timer2_flag == 1)
 	  {
 		  setTimer2(50);
