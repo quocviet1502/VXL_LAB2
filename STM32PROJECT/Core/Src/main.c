@@ -274,6 +274,12 @@ int main(void)
 			  hour = 0;
 		   }
 		   updateClockBuffer(hour, minute);
+		   update7SEG(index_led);
+		   index_led++;
+		   if ( index_led == MAX_LED )
+		   {
+			   index_led = 0;
+		   }
 	  }
     /* USER CODE END WHILE */
 
@@ -404,22 +410,22 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-int counter_7seg = 3;
+//int counter_7seg = 3;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	timerRun();
-	if(counter_7seg > 0){// LED 7SEG
-				counter_7seg --;
-				if(counter_7seg <= 0){
-					counter_7seg = 25;// 1Hz la 1s tuong ung 4 LED , moi led chay 250ms
-					update7SEG(index_led);
-					index_led++;
-					if ( index_led == MAX_LED )
-					{
-						index_led = 0;
-					}
-				}
-			}
+//	if(counter_7seg > 0){// LED 7SEG
+//				counter_7seg --;
+//				if(counter_7seg <= 0){
+//					counter_7seg = 25;// 1Hz la 1s tuong ung 4 LED , moi led chay 250ms
+//					update7SEG(index_led);
+//					index_led++;
+//					if ( index_led == MAX_LED )
+//					{
+//						index_led = 0;
+//					}
+//				}
+//			}
 }
 
 /* USER CODE END 4 */
