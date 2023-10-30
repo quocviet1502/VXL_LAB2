@@ -197,40 +197,9 @@ HAL_TIM_Base_Start_IT(&htim2);
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-int status = 1;
-  setTimer1(100);
-  setTimer2(50);
+
   while (1)
   {
-	  if ( timer1_flag == 1)
-	 	  {
-	 		  setTimer1(100);
-
-	 		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-	 	  }
-	  if (timer2_flag == 1)
-	  {
-		  setTimer2(50);
-		  switch ( status){
-		  case 1:
-			  HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, GPIO_PIN_RESET);
-			  HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, GPIO_PIN_SET);
-			  display7SEG(1);
-			  status = 2;
-			  break;
-		  case 2:
-			  HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, GPIO_PIN_SET);
-			  HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, GPIO_PIN_RESET);
-			  display7SEG(2);
-			  status = 1;
-			  break;
-		  default:
-			  break;
-		  }
-	  }
-
-
-
 
     /* USER CODE END WHILE */
 
@@ -358,11 +327,38 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+int status = 1;
+int counter = 50;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	timerRun1();
-	timerRun2();
-
+	 switch ( status){
+		case 1:
+				  HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, GPIO_PIN_RESET);
+				  HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, GPIO_PIN_SET);
+				  display7SEG(1);
+				  break;
+		case 2:
+				  HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, GPIO_PIN_SET);
+				  HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, GPIO_PIN_RESET);
+				  display7SEG(2);
+				  break;
+		default:
+				  break;
+			  }
+	 if (counter > 0)
+	 {
+		 counter--;
+		 if(counter <= 0)
+		 {
+			 counter = 50;
+			 if( status == 1)
+			 {
+				 status = 2;
+			 }
+			 else status = 1;
+			 HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+		 }
+	 }
 }
 
 /* USER CODE END 4 */
