@@ -21,7 +21,7 @@ void setTimer2( int duration)
 	timer2_counter = duration;
 	timer2_flag = 0;
 }
-void timerRun1()
+void timerRun()
 {
 	if ( timer1_counter > 0)
 	{
@@ -31,16 +31,14 @@ void timerRun1()
 			timer1_flag = 1;
 		}
 	}
-}
-void timerRun2()
-{
 	if ( timer2_counter > 0)
-	{
-		timer2_counter--;
-		if ( timer2_counter <= 0)
 		{
-			timer2_flag = 1;
+			timer2_counter--;
+			if ( timer2_counter <= 0)
+			{
+				timer2_flag = 1;
+			}
 		}
-	}
 }
+
 
