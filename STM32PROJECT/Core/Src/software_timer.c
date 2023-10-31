@@ -7,37 +7,37 @@
 
 #include "software_timer.h"
 
-int timer1_counter = 0;
-int timer2_counter = 0;
+int timer1_counter_dot ;
+int timer2_counter_7seg ;
 
-int timer1_flag = 0;
-int timer2_flag = 0;
+int timer1_flag_dot ;
+int timer2_flag_7seg ;
 void setTimer1( int duration)
 {
-	timer1_counter = duration;
-	timer1_flag = 0;
+	timer1_counter_dot = duration;
+	timer1_flag_dot = 0;
 }
 void setTimer2( int duration)
 {
-	timer2_counter = duration;
-	timer2_flag = 0;
+	timer2_counter_7seg = duration;
+	timer2_flag_7seg = 0;
 }
 void timerRun()
 {
-	if ( timer1_counter > 0)
+	if ( timer1_counter_dot > 0)
 	{
-		timer1_counter--;
-		if ( timer1_counter <= 0)
+		timer1_counter_dot--;
+		if ( timer1_counter_dot <= 0)
 		{
-			timer1_flag = 1;
+			timer1_flag_dot = 1;
 		}
 	}
-	if ( timer2_counter > 0)
+	if ( timer2_counter_7seg > 0)
 		{
-			timer2_counter--;
-			if ( timer2_counter <= 0)
+			timer2_counter_7seg--;
+			if ( timer2_counter_7seg <= 0)
 			{
-				timer2_flag = 1;
+				timer2_flag_7seg = 1;
 			}
 		}
 }
