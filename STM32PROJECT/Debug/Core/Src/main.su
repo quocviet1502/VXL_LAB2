@@ -1,6 +1,6 @@
-main.c:63:6:display8x8Matrix	16	static
-main.c:152:6:updateLEDMatrix	16	static
-main.c:270:5:main	8	static
+main.c:65:6:display8x8Matrix	16	static
+main.c:154:6:updateLEDMatrix	16	static
+main.c:274:5:main	8	static
 main.c:325:6:SystemClock_Config	72	static
 main.c:361:13:MX_TIM2_Init	32	static
 main.c:406:13:MX_GPIO_Init	32	static
