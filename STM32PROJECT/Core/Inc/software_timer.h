@@ -1,7 +1,7 @@
 /*
  * software_timer.h
  *
- *  Created on: Oct 30, 2023
+ *  Created on: Oct 31, 2023
  *      Author: Quoc Viet
  */
 
@@ -17,6 +17,5 @@ void timerRun();
 
 
 void display7SEG( int num);
-
 
 #endif /* INC_SOFTWARE_TIMER_H_ */

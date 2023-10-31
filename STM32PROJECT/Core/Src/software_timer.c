@@ -1,9 +1,10 @@
 /*
  * software_timer.c
  *
- *  Created on: Oct 30, 2023
+ *  Created on: Oct 31, 2023
  *      Author: Quoc Viet
  */
+
 #include "software_timer.h"
 
 int timer1_counter_dot = 0;
@@ -40,4 +41,3 @@ void timerRun()
 			}
 		}
 }
-
