@@ -254,13 +254,13 @@ int main(void)
 
   int hour = 15, minute = 8, second = 50;
   setTimer1(3);
-
   while (1)
   {
 	  if( timer1_flag_dot == 1)
 	  {
 		  setTimer1(100);
-		  HAL_GPIO_TogglePin ( LED_DOT_GPIO_Port , LED_DOT_Pin ) ;
+		  HAL_GPIO_TogglePin ( LED_DOT_GPIO_Port , LED_DOT_Pin );
+		  HAL_GPIO_TogglePin ( LED_RED_GPIO_Port , LED_RED_Pin ) ;
 		  second ++;
 		  if(second >= 60){
 			  second = 0;
@@ -274,12 +274,6 @@ int main(void)
 			  hour = 0;
 		   }
 		   updateClockBuffer(hour, minute);
-		   update7SEG(index_led);
-		   index_led++;
-		   if ( index_led == MAX_LED )
-		   {
-			   index_led = 0;
-		   }
 	  }
     /* USER CODE END WHILE */
 
